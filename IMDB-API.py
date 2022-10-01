@@ -23,4 +23,4 @@ for store in movie_data:
        data = {'poster':poster, 'name':movieTitle, 'id':id, 'year':year, 'Time':time, 'Ratings':ratings, 'Rating':rating}
        list.append(data)
        json_dump = json.dumps(list)
-       print(json_dump)
+       return json_dump
