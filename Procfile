@@ -1,1 +1,1 @@
-worker: python IMDB-API.py
+worker: python api.py
