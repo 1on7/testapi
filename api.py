@@ -25,4 +25,3 @@ def movies():
                list.append(data)
                json = jsonify(movies = list)
                return json
-app.run()
