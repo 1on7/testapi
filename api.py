@@ -31,3 +31,5 @@ def search():
       name = str(request.args.get('name'))
       data = {'name' : name}
       return data
+if __name__ == '__main__' :
+        app.run()
