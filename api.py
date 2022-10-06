@@ -2,7 +2,6 @@ from flask import *
 import requests
 from bs4 import BeautifulSoup
 import schedule as s
-import threaded
 import time as t
 import json
 import _thread as thread
