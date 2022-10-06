@@ -1,27 +1,33 @@
-from flask import Flask, jsonify
+from flask import *
 import requests
 from bs4 import BeautifulSoup
-from threading import Thread
+import schedule as s
+import threaded
+import time as t
 import json
-app = Flask('app')
+import _thread as thread
+from movies import movie, mv_id
+app = Flask(__name__)
+def rescrap():
+        from movies import movie
+        print("done")
+        return movie()
+def ref():
+        s.every(12).hours.do(rescrap)
+        while True:
+                     s.run_pending()
+                     t.sleep(1)
+thread.start_new_thread(ref, ())
 @app.route("/movie", methods=['POST', 'GET'])
 def movies():
-        url = 'https://m.imdb.com/list/ls073877946/'
-        response = requests.get(url)
-        list = []
-        soup = BeautifulSoup(response.content, 'html.parser')
-
-        movie_data = soup.findAll('div', attrs= {'class': 'list_items_container'})
-        for store in movie_data:
-               img_list = store.find("img")
-               movieTitle = img_list.get("alt")
-               poster = img_list.get("data-src-x2")
-               id = img_list.get("data-tconst")
-               year = store.find('span', class_ = "nowrap").text
-               time = store.p.find('span', class_ = "runtime").text
-               ratings = store.p.find('span', class_ ="genre").text.replace('\n', "").replace(' ', "")
-               rating = store.find('span', class_ ="imdb-rating").text
-               data = {'poster' : poster, 'Name' : movieTitle, 'Id' : id, 'Year' :  year, 'Time' : time, 'Ratings' : ratings, 'Rating' : rating}
-               list.append(data)
-               json = jsonify(movies = list)
-               return json
+        return movie()
+@app.route("/info/", methods=['POST', 'GET'])
+def info():
+      id = str(request.args.get('id'))
+      data = {'id' : id}
+      return data
+@app.route("/search/")
+def search():
+      name = str(request.args.get('name'))
+      data = {'name' : name}
+      return data
