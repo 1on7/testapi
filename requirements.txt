@@ -1,6 +1,6 @@
-requests==2.28.1
-beautifulsoup4==4.11.1
-Flask==2.2.2
-gunicorn
-schedule==1.1.0
-bs4==0.0.1
+pip install requests==2.28.1
+pip install beautifulsoup4==4.11.1
+pip install Flask==2.2.2
+pip install gunicorn
+pip install schedule==1.1.0
+pip install bs4==0.0.1
