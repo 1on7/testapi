@@ -7,7 +7,7 @@ import time as t
 import json
 import _thread as thread
 from movies import movie, mv_id
-app = Flask(__name__)
+app = Flask("app")
 def rescrap():
         from movies import movie
         print("done")
