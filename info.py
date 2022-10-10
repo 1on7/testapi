@@ -5,7 +5,7 @@ def data_info(uid):
         url = 'https://m.imdb.com/title/'+uid
 
         response = requests.get(url)
-        r = json.loads(response.content)
+        r = response.json()
         list = []
 
         soup = BeautifulSoup(r, 'html.parser')
