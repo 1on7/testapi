@@ -19,7 +19,10 @@ def data_info(uid):
         json_list = soup.find_all('script')[1].text
         json_data = json.loads(json_list)
         genre = json_data['genre']
-        meta_score = soup.find('span', 'score-meta').text
+        try:
+            meta_score = soup.find('span', 'score-meta').text
+        except:
+                meta_score = ""
         critic_reviews = soup.find_all('span', 'score')[1].text
         reviews = soup.find_all('span', 'score')[0].text
         oscars = soup.find_all('a', 'ipc-metadata-list-item__label ipc-metadata-list-item__label--link')[4].text
