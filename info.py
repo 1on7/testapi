@@ -25,7 +25,7 @@ def data_info(uid):
                 meta_score = ""
                 try :
                    critic_reviews = soup.find_all('span', 'score')[1].text
-                   except:
+                except:
                    	critic_reviews = ""
         reviews = soup.find_all('span', 'score')[0].text
         oscars = soup.find_all('a', 'ipc-metadata-list-item__label ipc-metadata-list-item__label--link')[4].text
