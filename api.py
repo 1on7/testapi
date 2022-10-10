@@ -8,7 +8,7 @@ import _thread as thread
 from trailer import trailer
 import json
 from info import data_info
-from movies import movie, mv_id
+from movies import movie
 app = Flask(__name__)
 def rescrap():
         from movies import movie
