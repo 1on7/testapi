@@ -5,10 +5,10 @@ def data_info(uid):
         url = 'https://m.imdb.com/title/'+uid
 
         response = requests.get(url)
-
+        r = json.loads(response.content)
         list = []
 
-        soup = BeautifulSoup(json.loads(response.content), 'html.parser')
+        soup = BeautifulSoup(r, 'html.parser')
 
         data = {};
         title = soup.find('h1', class_ ='sc-b73cd867-0 eKrKux').text
