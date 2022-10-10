@@ -6,10 +6,9 @@ def data_info(uid):
 
         response = requests.get(url)
 
-
         list = []
 
-        soup = BeautifulSoup(response.content.decode(), 'html.parser')
+        soup = BeautifulSoup(json.loads(response.content), 'html.parser')
 
         data = {};
         title = soup.find('h1', class_ ='sc-b73cd867-0 eKrKux').text
