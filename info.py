@@ -9,7 +9,7 @@ def data_info(uid):
 
         list = []
 
-        soup = BeautifulSoup(response.content, 'html.parser')
+        soup = BeautifulSoup(response.content.decode(), 'html.parser')
 
         data = {};
         title = soup.find('h1', class_ ='sc-b73cd867-0 eKrKux').text
