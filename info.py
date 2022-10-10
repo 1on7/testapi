@@ -34,7 +34,7 @@ def data_info(uid):
            age = soup.find_all('span', class_ = 'sc-8c396aa2-2 itZqyK')[1].text
         except:
         	age = ""
-        data = {'title':title, 'poster':poster, 'year':year, 'age':age,'time':run_time, 'genre':genre, 'description':description, 'meta_score':meta_score, 'critic_reviews':critic_reviews, 'reviews':reviews, 'oscars':oscars}
+        data = {'title':title.decode(), 'poster':poster, 'year':year, 'age':age,'time':run_time, 'genre':genre, 'description':description, 'meta_score':meta_score, 'critic_reviews':critic_reviews, 'reviews':reviews, 'oscars':oscars}
         list.append(data)
         json_dump = json.dumps(list)
         return json_dump
