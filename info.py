@@ -24,7 +24,7 @@ def data_info(uid):
                 try :
                    critic_reviews = soup.find_all('span', 'score')[1].text
                 except:
-                   	critic_reviews = ""
+                    critic_reviews = ""
         reviews = soup.find_all('span', 'score')[0].text
         oscars = soup.find_all('a', 'ipc-metadata-list-item__label ipc-metadata-list-item__label--link')[4].text
         poster = soup.find_all('meta')[9]['content']
