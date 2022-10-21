@@ -5,6 +5,8 @@ def data_info(uid):
         url = 'https://m.imdb.com/title/'+uid
 
         response = requests.get(url)
+
+
         list = []
 
         soup = BeautifulSoup(response.content, 'html.parser')
@@ -22,9 +24,9 @@ def data_info(uid):
         except:
                 meta_score = ""
         try :
-            critic_reviews = soup.find_all('span', 'score')[1].text
+               critic_reviews = soup.find_all('span', 'score')[1].text
         except:
-            critic_reviews = ""
+                  critic_reviews = ""
         reviews = soup.find_all('span', 'score')[0].text
         oscars = soup.find_all('a', 'ipc-metadata-list-item__label ipc-metadata-list-item__label--link')[4].text
         poster = soup.find_all('meta')[9]['content']
@@ -32,7 +34,19 @@ def data_info(uid):
            age = soup.find_all('span', class_ = 'sc-8c396aa2-2 itZqyK')[1].text
         except:
         	age = ""
-        data = {'title':title, 'poster':poster, 'year':year, 'age':age,'time':run_time, 'genre':genre, 'description':description, 'meta_score':meta_score, 'critic_reviews':critic_reviews, 'reviews':reviews, 'oscars':oscars}
+        data = {
+        'title':title,
+        'poster':poster,
+        'year':year,
+        'age':age,
+        'time':run_time,
+        'genre':genre,
+        'description':description,
+        'meta_score':meta_score,
+        'critic_reviews':critic_reviews,
+        'reviews':reviews,
+        'oscars':oscars
+        }
         list.append(data)
         json_dump = json.dumps(list)
         return json_dump
