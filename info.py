@@ -12,11 +12,13 @@ def data_info(uid):
         soup = BeautifulSoup(response.content, 'html.parser')
 
         data = {};
-        title = soup.find('h1', class_ ='sc-b73cd867-0 eKrKux').text
+        json_list = soup.find_all('script')[2].text
+        json_data = json.loads(json_list)
+        title = json_data['name']
         year = soup.find('span', class_ ='sc-8c396aa2-2 itZqyK').text
         run_time = soup.find_all(class_ = 'ipc-inline-list__item')[5].text
         description = soup.find(class_ = 'sc-16ede01-0 fMPjMP').text
-        json_list = soup.find_all('script')[1].text
+        json_list = soup.find_all('script')[2].text
         json_data = json.loads(json_list)
         genre = json_data['genre']
         try:
